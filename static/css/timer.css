@@ -1,0 +1,272 @@
+#clock-container {
+  margin: 1em;
+}
+
+
+.unit::after,
+.unit::before,
+.icon-expand,
+.triangle-nw,
+.triangle-sw,
+.triangle-se,
+.triangle-ne,
+.triangle-w,
+.triangle-s,
+.triangle-e,
+.triangle-n,
+.triangle-n-equal {
+  display: inline-block;
+  height: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  text-indent: 100%;
+  border-style: solid;
+  border-color: transparent;
+}
+
+/* Height and width are that of the bounding box, not the triangle! */
+.triangle-n-equal {
+  border-width: 0 3em 5.196em;
+  border-bottom-color: #333;
+}
+
+.triangle-n {
+  border-width: 0 0.5em 1em;
+  border-bottom-color: #f00;
+}
+
+.triangle-e {
+  border-width: 0.5em 0 0.5em 1em;
+  border-left-color: #f00;
+}
+
+.triangle-s {
+  border-width: 1em 0.5em 0;
+  border-top-color: #f00;
+}
+
+.triangle-w {
+  border-width: 0.5em 1em 0.5em 0;
+  border-right-color: #f00;
+}
+
+.triangle-ne {
+  border-width: 1em 0 0 1em;
+  border-top-color: #f00;
+}
+
+.triangle-se {
+  border-width: 0 0 1em 1em;
+  border-bottom-color: #f00;
+}
+
+.triangle-sw {
+  border-width: 0 1em 1em 0;
+  border-bottom-color: #f00;
+}
+
+.triangle-nw {
+  border-width: 1em 1em 0 0;
+  border-top-color: #f00;
+}
+
+.icon-expand {
+  border-width: 0.375em 0 0.375em 0.5em;
+  border-left-color: #fff;
+  transition: all 0.5s;
+}
+
+html {
+  background: #666;
+}
+
+#debug {
+  color: rgb(255, 0, 0);
+}
+
+.divider {
+  color: rgb(255, 0, 0);
+  font-size: 6em;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+
+.digit {
+  margin: 5em 1.5em 0 1.5em;
+  position: relative;
+  float: left;
+  width: 5.5em;
+  height: 9.5em;
+}
+
+.digit .unit:nth-child(2n) {
+  transform: rotateZ(90deg);
+  left: 2em;
+}
+
+.digit .unit:nth-child(1) {
+  top: 0.25em;
+  left: 0;
+}
+
+.digit .unit:nth-child(7) {
+  top: 0.25em;
+  left: 4em;
+}
+
+.digit .unit:nth-child(3) {
+  top: 4.25em;
+  left: 0;
+}
+
+.digit .unit:nth-child(5) {
+  top: 4.25em;
+  left: 4em;
+}
+
+.digit .unit:nth-child(2) {
+  top: -1.75em;
+}
+
+.digit .unit:nth-child(4) {
+  top: 2.25em;
+}
+
+.digit .unit:nth-child(6) {
+  top: 6.25em;
+}
+
+.digit.zero .unit:nth-child(4n),
+.digit.one .unit:nth-child(1),
+.digit.one .unit:nth-child(3),
+.digit.one .unit:nth-child(2),
+.digit.one .unit:nth-child(4),
+.digit.one .unit:nth-child(6),
+.digit.two .unit:nth-child(4n+1),
+.digit.three .unit:nth-child(1),
+.digit.three .unit:nth-child(3),
+.digit.four .unit:nth-child(2),
+.digit.four .unit:nth-child(3),
+.digit.four .unit:nth-child(6),
+.digit.five .unit:nth-child(4n+3),
+.digit.six .unit:nth-child(7n),
+.digit.seven .unit:nth-child(1),
+.digit.seven .unit:nth-child(3),
+.digit.seven .unit:nth-child(4),
+.digit.seven .unit:nth-child(6),
+.digit.nine .unit:nth-child(3n) {
+  background: rgba(0, 255, 0, 0.1);
+  color: rgba(0, 255, 0, 0.1);
+  box-shadow: none;
+}
+
+.unit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.5em;
+  height: 3em;
+  background: rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
+  box-shadow: 0 0 1em rgb(255, 0, 0);
+}
+
+.unit::before {
+  border-width: 0 0.25em 0.25em;
+  border-bottom-color: inherit;
+  content: "";
+  position: absolute;
+  top: -0.25em;
+  left: 0;
+}
+
+.unit::after {
+  border-width: 0.25em 0.25em 0;
+  border-top-color: inherit;
+  content: "";
+  position: absolute;
+  bottom: -0.25em;
+  left: 0;
+}
+/* Style for the separator */
+.separator {
+  font-size: 10em; /* Adjust the size as needed */
+  margin-top: 0.1em; /* Adjust the positioning as needed */
+  color: rgb(255, 0, 0); /* Use the same color as the numbers, or replace with your desired color */
+}
+
+.timer {
+  display: flex;
+  flex-direction: row; /* Horizontal alignment */
+  justify-content: center; /* Center align elements */
+  align-items: center; /* Vertically align elements */
+}
+
+/* button:active .icon-expand {
+  transform: rotateZ(90deg);
+}
+
+button:hover {
+  background: #264d73;
+}
+
+button:active {
+  background: #996633;
+} */
+
+#resetButton {
+  position: fixed;
+  color: rgb(255, 0, 0);
+  border: rgb(255, 0, 0) 0.125em solid;
+  padding: 0.25em 1em;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  border-radius: 0.25em;
+  background-color:#0c0117;
+  
+  text-shadow: 
+    0 0 0.125em hsl(0, 0%, 100% / 0.3),
+    0 0 0.125em rgb(255, 0, 0);
+
+  box-shadow: inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 0.5em 0 rgb(255, 0, 0);
+  left: 50%;
+  transform: translateX(10rem);
+ 
+
+}
+#startStopButton{
+  position:fixed;
+  color: rgb(255, 0, 0);
+  border: rgb(255, 0, 0) 0.125em solid;
+  padding: 0.25em 1em;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  border-radius: 0.25em;
+  background-color:#0c0117;
+  
+  text-shadow: 
+    0 0 0.125em hsl(0, 0%, 100% / 0.3),
+    0 0 0.125em rgb(255, 0, 0);
+
+  box-shadow: inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 0.5em 0 rgb(255, 0, 0);
+  left: 50%;
+  transform: translateX(-20rem);
+ 
+
+  
+}

@@ -1,0 +1,101 @@
+*, *::after, *::before {
+    box-sizing: border-box;    
+}
+
+body{
+    background-color:hsl(200, 100%, 85%) ;
+    margin: 0;
+    color: hsl(200, 100%, 10%);
+    font-family: sans-serif;
+
+
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+
+}
+
+.header-left{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem;
+    border-right: 3px solid hsl(200, 100%, 10%);
+}
+
+.weather-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+.weather-icon-large {
+    width: 150px;
+    height: 150px;
+
+}
+.header-current-temp {
+    font-size: 5rem;
+    margin-left:1rem;
+}
+
+.header-right {
+    display: grid;
+    width: 50%;
+    justify-content: space-around;
+    gap: 2rem;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+    
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: hsl(200, 100%, 20%);
+    text-align: center;
+
+
+}
+
+.value-sub-info {
+    font-weight: lighter;
+    font-size: 1rem;
+}
+
+#hourly-data {
+    width: 100%; /* Set the table to 100% width of its container */
+    table-layout: auto; /* Allow the table to adjust cell widths dynamically */
+    text-align: center;
+    border-spacing: 0;
+}
+
+.hour-row {
+    background-color: hsl(200, 60%, 75%);
+}
+
+.hour-row:nth-child(2n) {
+    background-color: hsl(200, 60%, 70%);
+}
+
+.hour-row img {
+    width: 70px; /* Adjust the width to your desired size */
+    height: 70px; /* Adjust the height to your desired size */
+}
+
+/* Remove any fixed cell widths */
+.hour-row td {
+    width: auto;
+}

@@ -1,0 +1,146 @@
+ :root {
+    --tab-color: #191919;
+    --white-color: #fff;
+    --home-icon-color: #00b7ff;
+    --tachometer-icon-color: #ff0000;
+    --stopwatch-icon-color: #fb0000;
+    --music-icon-color: #fc8d25;
+    --bell-icon-color: #48ff00;
+  }
+  
+  /* reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #0c0117;
+  }
+  
+  li {
+    display: inline-block;
+  }
+  
+  /* ------------ MENU ------------ */
+  .nav {
+    background-color: var(--tab-color);
+    width: 30em;
+    height: 8em;
+    border-radius: 2em;
+    padding: 0 2em;
+    box-shadow: 0 1em 1em rgba(0, 0, 0, 0.2);
+    
+    display: flex;
+    align-items: center;
+    
+    /* Center horizontally in the viewport */
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Place at the bottom of the viewport */
+    bottom: 0;
+  }
+  
+  .nav__links {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav__link a {
+    color: var(--white-color);
+    font-size: 2.5rem;
+    opacity: 0.5;
+  }
+  
+  .nav__light {
+    position: absolute;
+    top: 0;
+    left: 1.3em;
+    background-color: var(--white-color);
+    width: 4em;
+    height: 0.4em;
+    border-radius: 2px;
+  
+    display: flex;
+    justify-content: center;
+  
+    transition: 0.3s ease;
+  }
+  
+  .nav__light::before {
+    content: "";
+    width: 5em;
+    height: 7em;
+    position: absolute;
+    top: 0.4em;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.3) -50%,
+      rgba(255, 255, 255, 0) 90%
+    );
+    clip-path: polygon(30% 0, 70% 0, 100% 100%, 0% 100%);
+  }
+  
+  .nav__link.active a {
+    opacity: 1;
+  }
+  
+  .nav__link.active a .bx-home-alt-2 {
+    color: var(--home-icon-color);
+    text-shadow: 0 0 15px var(--home-icon-color), 0 0 30px var(--home-icon-color),
+      0 0 45px var(--home-icon-color), 0 0 60px var(--home-icon-color);
+  }
+  
+  .nav__link:nth-child(1).active ~ .nav__light {
+    background-color: var(--home-icon-color);
+  }
+  
+  .nav__link.active a .bx-tachometer {
+    color: var(--tachometer-icon-color);
+    text-shadow: 0 0 15px var(--tachometer-icon-color),
+      0 0 30px var(--tachometer-icon-color), 0 0 45px var(--tachometer-icon-color),
+      0 0 60px var(--tachometer-icon-color);
+  }
+  
+  .nav__link:nth-child(2).active ~ .nav__light {
+    background-color: var(--tachometer-icon-color);
+  }
+  
+  .nav__link.active a .bx-stopwatch {
+    color: var(--stopwatch-icon-color);
+    text-shadow: 0 0 15px var(--stopwatch-icon-color), 0 0 30px var(--stopwatch-icon-color),
+      0 0 45px var(--stopwatch-icon-color), 0 0 60px var(--stopwatch-icon-color);
+  }
+  
+  .nav__link:nth-child(3).active ~ .nav__light {
+    background-color: var(--stopwatch-icon-color);
+  }
+  
+  .nav__link.active a .bxs-music {
+    color: var(--music-icon-color);
+    text-shadow: 0 0 15px var(--music-icon-color), 0 0 30px var(--music-icon-color),
+      0 0 45px var(--music-icon-color), 0 0 60px var(--music-icon-color);
+  }
+
+  .nav__link:nth-child(4).active ~ .nav__light {
+    background-color: var(--music-icon-color);
+  }
+  
+  .nav__link.active a .bx-bell {
+    color: var(--bell-icon-color);
+    text-shadow: 0 0 15px var(--bell-icon-color), 0 0 30px var(--bell-icon-color),
+      0 0 45px var(--bell-icon-color), 0 0 60px var(--bell-icon-color);
+  }
+  
+  .nav__link:nth-child(5).active ~ .nav__light {
+    background-color: var(--bell-icon-color);
+  } 

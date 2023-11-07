@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="static/css/weather.css">
+<header class="header">
+    <div class="header-left">
+        <img class="weather-icon-large" src="static/assets/Images/rain.png" data-current-icon>
+        <div class="header-current-temp">
+            <span data-current-temp>{{ current_temperature }}</span>&deg;
+        </div>
+    </div>
+    <div class="header-right">
+        <div class="info-group">
+            <div class="label">Temp</div>
+            <div><span data-current-temp>{{ current_temperature }}</span>&deg;</div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Precip</div>
+            <div>
+                <span data-current-precip>{{ current_precipitation }}</span>
+                <span class="value-sub-info">in</span>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Wind</div>
+            <div>
+                <span data-current-wind>{{ current_windspeed }}</span>
+                <span class="value-sub-info">mph</span>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Wind Gust</div>
+            <div>
+                <span data-current-wind-gust>{{ current_windgusts }}</span>
+                <span class="value-sub-info">mph</span>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Relative Humidity</div>
+            <div><span data-current-humid>{{ current_relative_humidity }}</span>&percnt;</div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Surface Pressure</div>
+            <div>
+                <span data-current-pressure>{{ hourly_surface_pressure }}</span>
+                <span class="value-sub-info">bar</span>
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Soil Temp</div>
+            <div>
+                <span data-current-soil-temp>{{ hourly_soiltemp }}</span>&deg;
+            </div>
+        </div>
+
+        <div class="info-group">
+            <div class="label">Surface Moisture</div>
+            <div>
+                <span data-current-surface-moisture>{{ current_soil_moisture }}</span>&percnt;
+            </div>
+        </div>
+    </div>
+</header>
+
+<table id="hourly-data"></table>
+
+
+<template id="hour-row-template">
+    <tr class="hour-row">
+        <td>
+            <div class="info-group">
+                <div class="label" data-day></div>
+                <div data-time>{{time}}</div>
+            </div>
+        </td>
+        <td>
+            <img data-icon class="weather.icon" />
+        </td>        
+        <td>
+            <div class="info-group">
+                <div class="label">Temp</div>
+                <div><span data-temp-low>{{temperature_2m}}</span><span>&deg;</span></div>
+            </div>
+        </td>
+        <td>
+            <div class="info-group">
+                <div class="label">Precip</div>
+                <div><span data-precip>{{precipitation}}</span><span class="value-sub-info">in</span></div>
+            </div>
+        </td>
+        <td>
+            <div class="info-group">
+                <div class="label">Wind</div>
+                <div><span data-wind>{{windspeed_10m}}</span><span class="value-sub-info">mph</span></div>
+            </div>
+        </td>
+    </tr>
+</template>
+
+<script>
+    var hourly_data_list = {{ hourly_data | tojson | safe }} ;
+</script>
+
+{% endblock %}

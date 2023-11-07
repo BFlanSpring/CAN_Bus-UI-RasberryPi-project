@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+    <div id="clock-container">
+        <div class="timer">
+            <!-- Hour Tens Digit -->
+            <div class="digit" id="hour-tens">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+            <!-- Hour Ones Digit -->
+            <div class="digit" id="hour-ones">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+
+            <div class="separator">:</div>
+
+            <!-- Minute Tens Digit -->
+            <div class="digit" id="minute-tens">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+            <!-- Minute Ones Digit -->
+            <div class="digit" id="minute-ones">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+
+            <div class="separator">:</div>
+
+            <!-- Second Tens Digit -->
+            <div class="digit" id="second-tens">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+            <!-- Minute Ones Digit -->
+            <div class="digit" id="second-ones">
+                <div class="unit top"></div>
+                <div class="unit top-left"></div>
+                <div class="unit top-right"></div>
+                <div class="unit center"></div>
+                <div class="unit bottom-left"></div>
+                <div class="unit bottom-right"></div>
+                <div class="unit bottom"></div>
+            </div>
+            <!-- Add other time elements (if needed) -->
+        </div>
+    </div>
+
+    <button id="startStopButton">Start</button>
+    <button id="resetButton">Reset</button>
+{% endblock%}

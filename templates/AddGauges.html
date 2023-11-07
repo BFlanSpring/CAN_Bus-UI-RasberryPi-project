@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Select Gauges</h1>
+<div>
+    <label for="gaugeSelect">Select Gauge:</label>
+    <select id="gaugeSelect">
+        <option value="Boost_Pressure">Boost Pressure</option>
+        <option value="Engine_Temp">Engine Temperature</option>
+        <option value="Fuel_Pressure">Fuel Pressure</option>
+        <option value="O2">O2</option>
+        <option value="Oil_Pressure">Oil Pressure</option>
+        <option value="Oil_Temp">Oil Temperature</option>
+    </select>
+    <button id="addGauge">Add Gauge</button>
+</div>
+<script src="/static/js/gauges.js"></script>
+
+
+{% endblock %}

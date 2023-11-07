@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Indicator Home</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="static/css/styles.css">
+  <link rel="stylesheet" href="static/css/gauges.css">
+  <link rel="stylesheet" href="static/css/timer.css">
+  
+
+  <!-- BOXICONS -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+  <nav class="nav">
+    <ul class="nav__links">
+      <li class="nav__link {% if active_link == 'Home' %}active{% endif %}">
+        <a href="/Home"><i class='bx bx-home-alt-2'></i></a>
+      </li>
+      <li class="nav__link {% if active_link == 'HomeDash' %}active{% endif %}">
+        <a href="/HomeDash"><i class='bx bx-tachometer'></i></a>
+      </li>
+      <li class="nav__link {% if active_link == 'Timer' %}active{% endif %}">
+        <a href="/Timer"><i class='bx bx-stopwatch'></i></a>
+      </li>
+      <li class="nav__link {% if active_link == 'Music' %}active{% endif %}">
+        <a href="/Music"><i class='bx bxs-music'></i></a>
+      </li>
+      <li class="nav__link {% if active_link == 'Weather' %}active{% endif %}">
+        <a href="/Weather"><i class='bx bx-bell'></i></a>
+      </li>
+
+      <div class="nav__light"></div>
+    </ul>
+  </nav>
+
+
+  <div class="container" style="margin-top: 2em">
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-danger">{{ msg }}</div>
+    {% endfor %}
+
+    {% block content %}
+    {% endblock %}
+</div>
+
+  <script src="/static/js/NavBar.js"></script>
+  <script src="/static/js/gauges.js"></script>
+  <script src="/static/js/timer.js"></script>
+  <script src="/static/js/weather.js"></script>
+</body>
+
+</html>
