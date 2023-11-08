@@ -1,23 +1,31 @@
 const template = document.getElementById("hour-row-template");
 const container = document.getElementById("hourly-data");
 
-// Define a function to update the current_time variable with hours and minutes
+// Function to update and display the current time
 function updateCurrentTime() {
+    const currentTimeElement = document.getElementById("current-time");
+
+    // Get the current time
     const currentTime = new Date();
     const hours = currentTime.getHours();
     const minutes = currentTime.getMinutes();
+    const seconds = currentTime.getSeconds();
 
-    const formattedHours = hours.toString().padStart(2, '0');
-    const formattedMinutes = minutes.toString().padStart(2, '0');
+    // Format hours, minutes, and seconds with leading zeros
+    const formattedHours = hours.toString().padStart(2, "0");
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const formattedSeconds = seconds.toString().padStart(2, "0");
 
-    current_time = `${formattedHours}:${formattedMinutes}`;
+    // Display the time in the element
+    currentTimeElement.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 }
 
-// Call the function to initialize the current_time variable
+// Call the function to initialize the current time
 updateCurrentTime();
 
-// Set an interval to update the current_time variable every minute (60000 milliseconds)
-setInterval(updateCurrentTime, 60000); // Update every minute
+// Set an interval to update the current time every second (1000 milliseconds)
+setInterval(updateCurrentTime, 1000); // Update every second
+
 
 // Get the current time
 const currentTime = new Date();

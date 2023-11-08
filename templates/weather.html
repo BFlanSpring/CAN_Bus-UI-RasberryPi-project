@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <link rel="stylesheet" href="static/css/weather.css">
+
+<div id="current-time"></div>
+
 <header class="header">
     <div class="header-left">
         <img class="weather-icon-large" src="static/assets/Images/rain.png" data-current-icon>
@@ -68,6 +71,15 @@
 </header>
 
 <table id="hourly-data"></table>
+<form method="post" action="{{ url_for('showWeather') }}">
+    <label for="latitude">Latitude:</label>
+    <input type="text" id="latitude" name="latitude" required>
+
+    <label for="longitude">Longitude:</label>
+    <input type="text" id="longitude" name="longitude" required>
+
+    <button type="submit">Get Weather</button>
+</form>
 
 
 <template id="hour-row-template">
