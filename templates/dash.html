@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<button id="logButton">Log Data</button>
-
-<div class = "gauge">
-
+<div class="gauge">
     <div id="gaugeContainer"></div>
+    <button id="logButton">Log Data</button>
+    <a href="/EditDash" class="btn-primary">Edit Dash</a>
 </div>
-
-<a href="/EditDash" class="btn btn-primary">Edit Dash</a>
-<!-- <script src="/static/js/gauges.js"></script> -->
-
 {% endblock %}

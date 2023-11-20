@@ -3,7 +3,7 @@
 }
 
 body{
-    background-color:hsl(200, 100%, 85%) ;
+    background: #0c0117;
     margin: 0;
     color: hsl(200, 100%, 10%);
     font-family: sans-serif;
@@ -25,13 +25,14 @@ body{
     align-items: center;
     justify-content: center;
     margin: 3rem;
-    border-right: 3px solid hsl(200, 100%, 10%);
+    border-right: 3px solid hsl(200, 57%, 63%);
 }
 
 .weather-icon {
     width: 40px;
     height: 40px;
     object-fit: contain;
+    fill:red;
 }
 .weather-icon-large {
     width: 150px;
@@ -64,7 +65,7 @@ body{
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.5rem;
-    color: hsl(200, 100%, 20%);
+    color: hsl(207, 98%, 57%);
     text-align: center;
 
 
@@ -76,26 +77,70 @@ body{
 }
 
 #hourly-data {
-    width: 100%; /* Set the table to 100% width of its container */
-    table-layout: auto; /* Allow the table to adjust cell widths dynamically */
+    width: 100%; 
+    table-layout: auto; 
     text-align: center;
     border-spacing: 0;
 }
 
 .hour-row {
-    background-color: hsl(200, 60%, 75%);
+    background-color: hsl(206, 100%, 12%);
 }
 
 .hour-row:nth-child(2n) {
-    background-color: hsl(200, 60%, 70%);
+    background-color: hsl(207, 100%, 17%);
 }
 
 .hour-row img {
-    width: 70px; /* Adjust the width to your desired size */
-    height: 70px; /* Adjust the height to your desired size */
+    width: 70px; 
+    height: 70px; 
 }
 
-/* Remove any fixed cell widths */
 .hour-row td {
     width: auto;
 }
+
+.font-color{
+    color:rgb(170, 170, 170);
+}
+
+#current-time{
+    font-size: 3rem;
+}
+
+.weather-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #363636;
+    border-radius: 4px;
+    color: #000; 
+    font-size: 14px; 
+}
+
+input[type="text"]::placeholder {
+    color: #001653; 
+    opacity: 1; 
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+

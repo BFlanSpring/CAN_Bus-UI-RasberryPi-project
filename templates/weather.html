@@ -2,84 +2,85 @@
 {% block content %}
 <link rel="stylesheet" href="static/css/weather.css">
 
-<div id="current-time"></div>
+<div class = "font-color" id="current-time"></div>
 
 <header class="header">
     <div class="header-left">
         <img class="weather-icon-large" src="static/assets/Images/rain.png" data-current-icon>
         <div class="header-current-temp">
-            <span data-current-temp>{{ current_temperature }}</span>&deg;
+            <span data-current-temp class="font-color">{{ current_temperature }}</span><span class="font-color">&deg;</span>
         </div>
     </div>
     <div class="header-right">
         <div class="info-group">
             <div class="label">Temp</div>
-            <div><span data-current-temp>{{ current_temperature }}</span>&deg;</div>
+            <div><span data-current-temp class="font-color">{{ current_temperature }}</span><span class="font-color">&deg;</span></div>
         </div>
 
         <div class="info-group">
             <div class="label">Precip</div>
             <div>
-                <span data-current-precip>{{ current_precipitation }}</span>
-                <span class="value-sub-info">in</span>
+                <span data-current-precip class="font-color">{{ current_precipitation }}</span>
+                <span class="font-color">in</span>
             </div>
         </div>
 
         <div class="info-group">
             <div class="label">Wind</div>
             <div>
-                <span data-current-wind>{{ current_windspeed }}</span>
-                <span class="value-sub-info">mph</span>
+                <span data-current-wind class="font-color">{{ current_windspeed }}</span>
+                <span class="font-color">mph</span>
             </div>
         </div>
 
         <div class="info-group">
             <div class="label">Wind Gust</div>
             <div>
-                <span data-current-wind-gust>{{ current_windgusts }}</span>
-                <span class="value-sub-info">mph</span>
+                <span data-current-wind-gust class="font-color">{{ current_windgusts }}</span>
+                <span class="font-color"> mph</span>
             </div>
         </div>
 
         <div class="info-group">
             <div class="label">Relative Humidity</div>
-            <div><span data-current-humid>{{ current_relative_humidity }}</span>&percnt;</div>
+            <div><span data-current-humid class="font-color">{{ current_relative_humidity }}</span><span class= "font-color">&percnt;</span></div>
         </div>
 
         <div class="info-group">
             <div class="label">Surface Pressure</div>
             <div>
-                <span data-current-pressure>{{ hourly_surface_pressure }}</span>
-                <span class="value-sub-info">bar</span>
+                <span data-current-pressure class="font-color">{{ hourly_surface_pressure }}</span>
+                <span class="font-color"> bar</span>
             </div>
         </div>
 
         <div class="info-group">
             <div class="label">Soil Temp</div>
             <div>
-                <span data-current-soil-temp>{{ hourly_soiltemp }}</span>&deg;
+                <span data-current-soil-temp class="font-color">{{ hourly_soiltemp }}</span><span class="font-color">&deg;</span>
             </div>
         </div>
 
         <div class="info-group">
             <div class="label">Surface Moisture</div>
             <div>
-                <span data-current-surface-moisture>{{ current_soil_moisture }}</span>&percnt;
+                <span data-current-surface-moisture class="font-color">{{ current_soil_moisture }}</span> <span class="font-color">&percnt;</span>;
             </div>
         </div>
     </div>
 </header>
 
 <table id="hourly-data"></table>
-<form method="post" action="{{ url_for('showWeather') }}">
-    <label for="latitude">Latitude:</label>
-    <input type="text" id="latitude" name="latitude" required>
+<form method="post" action="{{ url_for('showWeather') }}" class="weather-form">
+    <label for="latitude"></label>
+    <input type="text" id="latitude" name="latitude" placeholder="Latitude" required>
 
-    <label for="longitude">Longitude:</label>
-    <input type="text" id="longitude" name="longitude" required>
+    <label for="longitude"></label>
+    <input type="text" id="longitude" name="longitude" placeholder="Longitude" required>
 
     <button type="submit">Get Weather</button>
 </form>
+
 
 
 <template id="hour-row-template">
@@ -87,7 +88,7 @@
         <td>
             <div class="info-group">
                 <div class="label" data-day></div>
-                <div data-time>{{time}}</div>
+                <div data-time class="font-color">{{time}}</div>
             </div>
         </td>
         <td>
@@ -96,19 +97,23 @@
         <td>
             <div class="info-group">
                 <div class="label">Temp</div>
-                <div><span data-temp-low>{{temperature_2m}}</span><span>&deg;</span></div>
+                <div>
+                    <span data-temp-low class="font-color">{{temperature_2m}}</span><span class="font-color">&deg;</span>
+                </div>
             </div>
         </td>
         <td>
             <div class="info-group">
                 <div class="label">Precip</div>
-                <div><span data-precip>{{precipitation}}</span><span class="value-sub-info">in</span></div>
+                <div>
+                    <span data-precip class="font-color">{{precipitation}}</span><span class="font-color"> in</span>
+                </div>
             </div>
         </td>
         <td>
             <div class="info-group">
                 <div class="label">Wind</div>
-                <div><span data-wind>{{windspeed_10m}}</span><span class="value-sub-info">mph</span></div>
+                <div><span data-wind class="font-color">{{windspeed_10m}}</span><span  class="font-color"> mph</span></div>
             </div>
         </td>
     </tr>

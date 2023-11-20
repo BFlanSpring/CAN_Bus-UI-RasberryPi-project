@@ -23,17 +23,34 @@ function updateCurrentTime() {
 // Call the function to initialize the current time
 updateCurrentTime();
 
-// Set an interval to update the current time every second (1000 milliseconds)
-setInterval(updateCurrentTime, 1000); // Update every second
+// Function to update the first row of hourly data table based on the current hour
+function updateFirstRow() {
+    const firstRow = container.querySelector(".hour-row");
 
+    // Get the current hour
+    const currentHour = new Date().getHours();
 
-// Get the current time
-const currentTime = new Date();
-const currentHour = currentTime.getHours();
+    // Find the data for the current hour
+    const currentHourData = hourly_data_list.find(data => {
+        const hour = new Date(data.time).getHours();
+        return hour === currentHour;
+    });
 
-// Loop through the hourly_data_list
+    if (currentHourData) {
+        // Fill in the template with the data for the current hour
+        firstRow.querySelector("[data-day]").textContent = formatDate(currentHourData.time);
+        firstRow.querySelector("[data-time]").textContent = formatTime(currentHourData.time);
+        firstRow.querySelector("[data-icon]").src = getWeatherIcon(currentHourData.weathercode);
+        firstRow.querySelector("[data-temp-low]").textContent = currentHourData.temperature_2m;
+        firstRow.querySelector("[data-precip]").textContent = currentHourData.precipitation;
+        firstRow.querySelector("[data-wind]").textContent = currentHourData.windspeed_10m;
+    }
+}
+
+// Loop through the hourly_data_list and populate rows
 for (let i = 0; i < 5; i++) {
     // Calculate the hour for this row
+    const currentHour = new Date().getHours();
     const hour = (currentHour + i) % 24;
 
     // Clone the template content for each hour
@@ -52,9 +69,16 @@ for (let i = 0; i < 5; i++) {
     container.appendChild(hourTemplate);
 }
 
-// You might want to implement the following helper functions if not already done:
+// Set an interval to update the current time and first row every second (1000 milliseconds)
+setInterval(() => {
+    updateCurrentTime(); // Update the current time
+    const currentHour = new Date().getHours();
+    if (currentHour % 1 === 0) {
+        updateFirstRow(); // Update the first row when hour changes
+    }
+}, 1000);
 
-// Function to format the date as needed
+
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString();

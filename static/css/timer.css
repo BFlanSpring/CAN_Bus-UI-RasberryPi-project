@@ -25,7 +25,7 @@
   border-color: transparent;
 }
 
-/* Height and width are that of the bounding box, not the triangle! */
+
 .triangle-n-equal {
   border-width: 0 3em 5.196em;
   border-bottom-color: #333;
@@ -199,31 +199,19 @@ html {
   bottom: -0.25em;
   left: 0;
 }
-/* Style for the separator */
+
 .separator {
-  font-size: 10em; /* Adjust the size as needed */
-  margin-top: 0.1em; /* Adjust the positioning as needed */
-  color: rgb(255, 0, 0); /* Use the same color as the numbers, or replace with your desired color */
+  font-size: 10em;
+  margin-top: 0.1em;
+  color: rgb(255, 0, 0); 
 }
 
 .timer {
   display: flex;
-  flex-direction: row; /* Horizontal alignment */
-  justify-content: center; /* Center align elements */
-  align-items: center; /* Vertically align elements */
+  flex-direction: row; 
+  justify-content: center; 
+  align-items: center; 
 }
-
-/* button:active .icon-expand {
-  transform: rotateZ(90deg);
-}
-
-button:hover {
-  background: #264d73;
-}
-
-button:active {
-  background: #996633;
-} */
 
 #resetButton {
   position: fixed;

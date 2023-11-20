@@ -30,11 +30,6 @@ def home():
     active_link = "Home"
     return render_template("home.html", active_link=active_link)
 
-# @app.route("/HomeDash", methods = ["POST"])
-# def renderdash():
-#     """Render the signed-in user's dash"""
-#     active_link = "HomeDash"
-#     return render_template("dash.html", active_link=active_link)
 
 
 @app.route("/HomeDash", methods=["GET", "POST"])
@@ -75,21 +70,13 @@ def log_data():
 
 @app.route("/update-logging", methods=["POST"])
 def update_logging():
-    global is_logging_enabled  # Declare the variable as global
+    global is_logging_enabled 
 
     data = request.get_json()
     is_logging_enabled = data.get("isLoggingEnabled", False)
 
-    # You can now use the updated `is_logging_enabled` variable as needed.
-    # You can also return a response to confirm the state change.
     message = "Logging is now enabled" if is_logging_enabled else "Logging is now disabled"
     return jsonify({"message": message})
-
-
-
-
-
-
 
 
 
@@ -138,17 +125,14 @@ def showWeather():
         current_windgusts = data['current']['windgusts_10m']
         current_soil_moisture = data['hourly']['soil_moisture_0_to_1cm'][12]
         
-        # Extract the hourly data
         hourly_data = data['hourly']
         
-        # Initialize an empty list to store hourly data
         hourly_data_list = []
         
-        # Extract hourly variables
         hourly_time = hourly_data['time']
         temperature_2m = hourly_data['temperature_2m']
         relativehumidity_2m = hourly_data['relativehumidity_2m']
-        precipitation = hourly_data['precipitation']  # Corrected
+        precipitation = hourly_data['precipitation'] 
         weathercode = hourly_data['weathercode']
         windspeed_10m = hourly_data['windspeed_10m']
         windgusts_10m = hourly_data['windgusts_10m']
@@ -159,13 +143,13 @@ def showWeather():
                 'time': hourly_time[i],
                 'temperature_2m': temperature_2m[i],
                 'relativehumidity_2m': relativehumidity_2m[i],
-                'precipitation': precipitation[i],  # Corrected
+                'precipitation': precipitation[i], 
                 'weathercode': weathercode[i],
                 'windspeed_10m': windspeed_10m[i],
                 'windgusts_10m': windgusts_10m[i]
             })
 
-        # Print the hourly_data_list to the console
+      
         for hour_data in hourly_data_list:
             print(hour_data)
 

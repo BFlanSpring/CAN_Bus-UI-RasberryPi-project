@@ -14,7 +14,7 @@ function initializeGauges() {
         "Oil_Temp": new Image(),
     };
 
-    // Set the source URLs for the images
+
     gaugeImages["Boost_Pressure"].src = "static/assets/Images/Boost_Pressure.png";
     gaugeImages["Engine_Temp"].src = "static/assets/Images/Engine_Temp.png";
     gaugeImages["Fuel_Pressure"].src = "static/assets/Images/Fuel_Pressure.png";
@@ -70,15 +70,15 @@ function initializeGauges() {
     };
     
 
-    // Create an object to keep track of canvas elements
+    
     const canvasElements = {};
 
     function drawNumber(context, x, y, value, unit) {
-        const boxWidth = 200; // Width of the background box
-        const boxHeight = 70; // Height of the background box
-        const boxX = x - boxWidth / 2; // Adjust the X coordinate as needed
-        const boxY = y - boxHeight / 2; // Adjust the Y coordinate as needed
-        const cornerRadius = 10; // Adjust the corner radius as needed
+        const boxWidth = 200; 
+        const boxHeight = 70;
+        const boxX = x - boxWidth / 2; 
+        const boxY = y - boxHeight / 2; 
+        const cornerRadius = 10; 
     
         // Draw the background box with rounded corners
         context.fillStyle = "rgba(224, 142, 38, 1)"; // Background color with alpha for transparency
