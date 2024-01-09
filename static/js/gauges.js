@@ -105,7 +105,7 @@ function initializeGauges() {
 
     function drawTitle(context, x, y, title) {
         context.fillStyle = "white";
-        context.font = "30px Arial"; // Adjust the font size as needed
+        context.font = "30px Arial"; 
         context.textAlign = "center";
         context.fillText(title, x, y);
     }
@@ -156,7 +156,7 @@ function initializeGauges() {
         ctx.stroke();
 
         drawTitle(ctx, centerX, centerY+50, gaugeTypes[gaugeType].title)
-        drawNumber(ctx, centerX, centerY + 105, value);
+        drawNumber(ctx, centerX, centerY + 105, Math.floor(value));
         
 
         const imageSize = 115;
@@ -192,6 +192,14 @@ function initializeGauges() {
     let ecuValue5 = 180;
     let ecuValue6 = 112;
 
+    const range = {
+        ecuValue1: { min: 200, max: 250, changeFactor: 0.1 },
+        ecuValue2: { min: 15, max: 30, changeFactor: 0.2 },
+        ecuValue3: { min: 25, max: 40, changeFactor: 0.3 },
+        ecuValue4: { min: 13, max: 15, changeFactor: 0.05 },
+        ecuValue5: { min: 180, max: 225, changeFactor: 0.4 },
+        ecuValue6: { min: 50, max: 120, changeFactor: 0.15 },
+    };
 
 
     const logButton = document.getElementById("logButton");
@@ -219,11 +227,20 @@ function initializeGauges() {
         });
     });
 
+
     function updateECUValues() {
         const ecuUpdateInterval = 100;
         setTimeout(updateECUValues, ecuUpdateInterval);
-
-        // Update each gauge separately
+    
+        // Update each gauge value incrementally within the defined range
+        ecuValue1 = updateValueInRange(ecuValue1, range.ecuValue1.min, range.ecuValue1.max, range.ecuValue1.changeFactor);
+        ecuValue2 = updateValueInRange(ecuValue2, range.ecuValue2.min, range.ecuValue2.max, range.ecuValue2.changeFactor);
+        ecuValue3 = updateValueInRange(ecuValue3, range.ecuValue3.min, range.ecuValue3.max, range.ecuValue3.changeFactor);
+        ecuValue4 = updateValueInRange(ecuValue4, range.ecuValue4.min, range.ecuValue4.max, range.ecuValue4.changeFactor);
+        ecuValue5 = updateValueInRange(ecuValue5, range.ecuValue5.min, range.ecuValue5.max, range.ecuValue5.changeFactor);
+        ecuValue6 = updateValueInRange(ecuValue6, range.ecuValue6.min, range.ecuValue6.max, range.ecuValue6.changeFactor);
+    
+        // Update the gauges with the new values
         drawGaugeAndNumber(ecuValue1, "Engine_Temp");
         drawGaugeAndNumber(ecuValue2, "Boost_Pressure");
         drawGaugeAndNumber(ecuValue3, "Fuel_Pressure");
@@ -231,11 +248,34 @@ function initializeGauges() {
         drawGaugeAndNumber(ecuValue5, "Oil_Temp");
         drawGaugeAndNumber(ecuValue6, "Oil_Pressure");
 
+        function updateValueInRange(value, minValue, maxValue, changeFactor) {
+            let newValue = (value + (Math.random() * 2 - 1) * changeFactor);
+            newValue = Math.max(Math.min(newValue, maxValue), minValue);
+            return newValue;
+        }
+    
         if (is_Logging_Enabled) {
             // Log the data to your server
             logDataToServer(ecuValue1, ecuValue2, ecuValue3, ecuValue4, ecuValue5, ecuValue6);
         }
     }
+    // function updateECUValues() {
+    //     const ecuUpdateInterval = 100;
+    //     setTimeout(updateECUValues, ecuUpdateInterval);
+
+    //     // Update each gauge separately
+    //     drawGaugeAndNumber(ecuValue1, "Engine_Temp");
+    //     drawGaugeAndNumber(ecuValue2, "Boost_Pressure");
+    //     drawGaugeAndNumber(ecuValue3, "Fuel_Pressure");
+    //     drawGaugeAndNumber(ecuValue4, "O2");
+    //     drawGaugeAndNumber(ecuValue5, "Oil_Temp");
+    //     drawGaugeAndNumber(ecuValue6, "Oil_Pressure");
+
+    //     if (is_Logging_Enabled) {
+    //         // Log the data to your server
+    //         logDataToServer(ecuValue1, ecuValue2, ecuValue3, ecuValue4, ecuValue5, ecuValue6);
+    //     }
+    // }
 
     function logDataToServer(value1, value2, value3, value4, value5, value6) {
         // Create a JSON object with the data
@@ -264,24 +304,7 @@ function initializeGauges() {
                 console.error("Error logging data:", error);
             });
     }
-
-    // Start updating with ECU values
     updateECUValues();
 }
 
-    // function updateECUValues() {
-    //     const ecuUpdateInterval = 10;
-    //     setTimeout(updateECUValues, ecuUpdateInterval);
-
-    //     // Update each gauge separately
-    //     drawGaugeAndNumber(ecuValue1, "Engine_Temp");
-    //     drawGaugeAndNumber(ecuValue2, "Boost_Pressure");
-    //     drawGaugeAndNumber(ecuValue3, "Fuel_Pressure");
-    //     drawGaugeAndNumber(ecuValue4, "O2");
-    //     drawGaugeAndNumber(ecuValue5, "Oil_Temp");
-    //     drawGaugeAndNumber(ecuValue6, "Oil_Pressure");
-
-    // }
-
-    // Start updating with ECU values
 

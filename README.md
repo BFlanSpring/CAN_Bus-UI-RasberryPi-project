@@ -18,15 +18,19 @@ For developemnt purposes I mounted a rasberryPi to the back of a $35 amazon touc
 
 ## Installation
 
-(under assumption I have finished pre-loaded application launching files)
+Download this folder and save it to your desired directory. Once you have done this, it is now helpful to create your own venv environment, for many users it will look something along the lines of this -- python3 -m venv venv -- next activate the newly created enviroment and pip install the provided requirements.txt.
 
-Requirements: in folder, still being created
+After all of the necessary requirements are installed, open PSQL and connect to your db server. Once you are in the psql command lines run -- \i seed.sql -- to create your db and tables for this project.
 
--for requirments download requirements.txt(ask Cody)
+Once these have been completed, run --flask run-- in your terminal which should launch your flask application running on your local port.
 
 ## Usage
 
-This product should be relativly straight forward, after installing the application and its necessary requirements from the github into your newly created directory, run flask (soon will have files to launch app on some trigger, like rasberrypi bootup). After flask is running, the application will load and the main selection taskbar will render, you will see multiple selections. all apllications should pre load data with buttons to edit/ change the curret layout and preferences.
+This product should be relativly user friendly, after installing the application and its necessary requirements from the github repo into your newly created directory, run flask. After flask is running, the application will load and the main selection taskbar will render, you will see multiple selections. As of now, 3 tabs have full content, the notification Bell on the far right will redirect you to the API derived weather page. This page allows a user to input any coordinates they choose and will pull up all avaiable weather data for that location all in live time.
+
+The Tachometer button on the task bar will bring you to your instrument cluster page which will display real time data management values. Users will be able to log all current data to this apps Log database by toggling logging on and off. These vairables that can be logged are all vital values projected from the cars ECU, this includes things like RPM, Oil temp, water temp, boost pressure, Oil pressure, knock detection and many more variables. At this time, the Edit dash does not do anything. As this app developes I will add in more gauges and sensors that a user can customize to their liking.
+
+There is also an ab 8 bit timer I created with raw JS for fun.
 
 ## Contributing
 **API WEATHER SOURCE: https://api.open-meteo.com/v1/forecast?latitude=42.9&longitude=72.8&current=temperature_2m,relativehumidity_2m,precipitation,weathercode,windspeed_10m,winddirection_10m,windgusts_10m&hourly=temperature_2m,relativehumidity_2m,precipitation,weathercode,surface_pressure,windspeed_10m,windgusts_10m,soil_temperature_0cm,soil_moisture_0_to_1cm&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=3  **
@@ -38,7 +42,4 @@ HELP MAKE SOME CONTRIBUTIONS AND BETTER THIS APPLICATION AND GET A MENTION!
 
 ## License
 
-This application is open-source and created to be used by all. ** Have fun and stay safe! **
-
-
-
+Apache 2.0

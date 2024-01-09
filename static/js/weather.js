@@ -11,23 +11,19 @@ function updateCurrentTime() {
     const minutes = currentTime.getMinutes();
     const seconds = currentTime.getSeconds();
 
-    // Format hours, minutes, and seconds with leading zeros
     const formattedHours = hours.toString().padStart(2, "0");
     const formattedMinutes = minutes.toString().padStart(2, "0");
     const formattedSeconds = seconds.toString().padStart(2, "0");
 
-    // Display the time in the element
+   
     currentTimeElement.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
 }
 
-// Call the function to initialize the current time
 updateCurrentTime();
 
 // Function to update the first row of hourly data table based on the current hour
 function updateFirstRow() {
     const firstRow = container.querySelector(".hour-row");
-
-    // Get the current hour
     const currentHour = new Date().getHours();
 
     // Find the data for the current hour
@@ -52,8 +48,6 @@ for (let i = 0; i < 5; i++) {
     // Calculate the hour for this row
     const currentHour = new Date().getHours();
     const hour = (currentHour + i) % 24;
-
-    // Clone the template content for each hour
     const hourTemplate = template.content.cloneNode(true);
 
     // Fill in the template with the data for the current hour

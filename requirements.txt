@@ -3,3 +3,6 @@ flask_wtf
 sqlalchemy
 wtforms
 flask_bcrypt
+flask-sqlalchemy 
+requests
+psycopg2-binary
